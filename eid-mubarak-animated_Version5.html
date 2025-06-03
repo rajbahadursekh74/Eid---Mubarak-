@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ঈদ মোবারক শেয়ার করুন</title>
+    <style>
+        body {
+            font-family: 'Noto Sans Bengali', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #2c5364 90%);
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 0;
+        }
+        .container {
+            background: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.22);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 36px 16px 24px 16px;
+            margin: 50px auto 0 auto;
+            max-width: 450px;
+        }
+        h1 {
+            color: #ffd700;
+            font-size: 38px;
+            font-family: 'Satisfy', cursive;
+            margin-top: 0;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+        }
+        .message {
+            font-size: 22px;
+            color: #fff;
+            margin: 18px 0 22px 0;
+            background: rgba(0,0,0,0.15);
+            border-radius: 9px;
+            padding: 15px 12px;
+        }
+        input, button {
+            font-size: 18px;
+            padding: 10px;
+            margin: 8px 4px;
+            border-radius: 6px;
+            border: none;
+        }
+        input {
+            border: 1px solid #ffc107;
+            background: #fff9e6;
+            color: #333;
+            width: 40%;
+            min-width: 95px;
+        }
+        .share-buttons {
+            margin-top: 20px;
+        }
+        .share-button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 8px 6px 0 6px;
+            cursor: pointer;
+            padding: 10px 18px;
+            transition: 0.2s;
+            font-weight: bold;
+        }
+        .share-button:hover {
+            background-color: #128c51;
+        }
+        .share-button.messenger {
+            background-color: #0084FF;
+        }
+        .share-button.copy-link {
+            background-color: #ff9800;
+        }
+        .send-own {
+            background: #fff;
+            color: #008000;
+            border: 1px solid #ffd700;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-top: 22px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .send-own:hover {
+            background: #ffe599;
+            color: #2c5364;
+        }
+        /* --- Islamic Animated Art --- */
+        .islamic-art {
+            position: relative;
+            height: 180px;
+            margin: 0 auto 18px auto;
+            width: 100%;
+            max-width: 420px;
+        }
+        .crescent-moon {
+            position: absolute;
+            left: 50%;
+            top: 80px;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, 0);
+            background: #ffd700;
+            border-radius: 50%;
+            z-index: 2;
+            animation: moonFloat 6s ease-in-out infinite alternate;
+        }
+        .crescent-moon:before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 4px;
+            width: 44px;
+            height: 44px;
+            background: #2c5364;
+            border-radius: 50%;
+            z-index: 3;
+        }
+        .star-glitter {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 42%;
+            top: 50px;
+            pointer-events: none;
+            animation: starTwinkle 2.2s linear infinite alternate;
+        }
+        .star-glitter2 {
+            left: 62%;
+            top: 33px;
+            width: 13px; height: 13px;
+            animation-delay: 1.2s;
+        }
+        .star-glitter3 {
+            left: 26%;
+            top: 102px;
+            width: 9px; height: 9px;
+            animation-delay: 0.7s;
+        }
+        .star-glitter4 {
+            left: 78%;
+            top: 160px;
+            width: 8px; height: 8px;
+            animation-delay: 2.1s;
+        }
+        .star-shape {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%) rotate(14deg);
+            width: 100%;
+            height: 100%;
+        }
+        .star-shape:before, .star-shape:after {
+            content: '';
+            position: absolute;
+            left: 50%; top: 50%;
+            width: 2px;
+            height: 100%;
+            background: #fffde4;
+            border-radius: 1px;
+            transform: translate(-50%, -50%);
+        }
+        .star-shape:after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+        .lantern {
+            position: absolute;
+            width: 38px;
+            height: 76px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: lanternSwing 2.9s ease-in-out infinite alternate;
+        }
+        .lantern.left {
+            left: 22%;
+            top: 22px;
+            animation-delay: 0.2s;
+        }
+        .lantern.right {
+            left: 68%;
+            top: 28px;
+            animation-delay: 1.0s;
+        }
+        .lantern.center {
+            left: 45.5%;
+            top: 10px;
+            animation-delay: 0.6s;
+        }
+        .lantern-string {
+            width: 2.2px;
+            height: 30px;
+            background: #ffe599;
+            margin-bottom: -6px;
+            border-radius: 2px;
+            box-shadow: 0 0 3px #ffe59988;
+        }
+        .lantern.center .lantern-string {
+            display: none;
+        }
+        .lantern-top {
+            width: 19px;
+            height: 9px;
+            background: #e8b700;
+            border-radius: 8px 8px 4px 4px/6px 6px 3px 3px;
+            margin: 0 auto;
+            margin-bottom: -2px;
+            z-index: 1;
+            box-shadow: 0 2px 5px #ffd70055;
+        }
+        .lantern-body {
+            width: 34px;
+            height: 40px;
+            background: linear-gradient(180deg, #ffd700 70%, #fffbe8 100%);
+            border-radius: 12px 12px 16px 16px/18px 18px 24px 24px;
+            border: 2px solid #e8b700;
+            margin-top: 0px;
+            position: relative;
+            box-shadow: 0 3px 16px 0 #ffe59980, 0 0px 8px #ffd70044;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .lantern-light {
+            width: 16px;
+            height: 9px;
+            background: #fffad3;
+            border-radius: 0 0 13px 13px;
+            margin-bottom: -2px;
+            box-shadow: 0 4px 8px 2px #fffde466;
+            animation: lightGlow 1.4s infinite alternate;
+            border-top: 1px solid #ffeca1a0;
+        }
+        .mosque {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 80px;
+            z-index: 1;
+        }
+        .mosque svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        @keyframes moonFloat {
+            0% {transform: translate(-50%, 0);}
+            100% {transform: translate(-50%, -12px);}
+        }
+        @keyframes starTwinkle {
+            0% { opacity: 1; filter: blur(0);}
+            100% { opacity: 0.5; filter: blur(1.5px);}
+        }
+        @keyframes lanternSwing {
+            0% { transform: rotate(-7deg);}
+            100% { transform: rotate(7deg);}
+        }
+        @keyframes lightGlow {
+            0% {box-shadow: 0 4px 8px 2px #fffde466, 0 0 2px 1px #ffd70070;}
+            100% {box-shadow: 0 9px 14px 4px #fffde4cc, 0 0 8px 3px #ffd700c0;}
+        }
+        @media (max-width: 500px) {
+            .container {padding: 12px 4px;}
+            .islamic-art {height:120px;}
+            h1 {font-size: 25px;}
+            .message {font-size: 15px;}
+            .lantern {width: 26px;}
+            .lantern-body {width: 22px;}
+        }
+        /* Adsterra Banner design */
+        .ad-banner-area {
+            margin: 18px auto;
+            text-align: center;
+            min-height: 60px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Adsterra Banner (Header) -->
+    <div class="ad-banner-area">
+        <!-- এখানে Adsterra থেকে পাওয়া কোড বসান -->
+        <!-- উদাহরণ: <script type="text/javascript" src="https://example.com/ad.js"></script> -->
+    </div>
+    <div class="container">
+        <div class="islamic-art">
+            <div class="crescent-moon"></div>
+            <div class="star-glitter"><div class="star-shape"></div></div>
+            <div class="star-glitter star-glitter2"><div class="star-shape"></div></div>
+            <div class="star-glitter star-glitter3"><div class="star-shape"></div></div>
+            <div class="star-glitter star-glitter4"><div class="star-shape"></div></div>
+            <div class="lantern left">
+                <div class="lantern-string"></div>
+                <div class="lantern-top"></div>
+                <div class="lantern-body">
+                    <div class="lantern-light"></div>
+                </div>
+            </div>
+            <div class="lantern center">
+                <div class="lantern-top"></div>
+                <div class="lantern-body">
+                    <div class="lantern-light"></div>
+                </div>
+            </div>
+            <div class="lantern right">
+                <div class="lantern-string"></div>
+                <div class="lantern-top"></div>
+                <div class="lantern-body">
+                    <div class="lantern-light"></div>
+                </div>
+            </div>
+            <div class="mosque">
+                <svg viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="70" cy="65" rx="40" ry="15" fill="#1b3142"/>
+                  <ellipse cx="230" cy="65" rx="40" ry="15" fill="#1b3142"/>
+                  <rect x="58" y="38" width="24" height="27" fill="#1b3142"/>
+                  <rect x="110" y="45" width="28" height="20" fill="#1b3142"/>
+                  <rect x="162" y="50" width="38" height="15" fill="#1b3142"/>
+                  <rect x="214" y="40" width="22" height="25" fill="#1b3142"/>
+                  <rect x="250" y="46" width="18" height="19" fill="#1b3142"/>
+                  <circle cx="70" cy="35" r="16" fill="#1b3142"/>
+                  <rect x="65" y="12" width="10" height="25" fill="#1b3142"/>
+                  <circle cx="225" cy="30" r="12" fill="#1b3142"/>
+                  <rect x="220" y="10" width="10" height="22" fill="#1b3142"/>
+                  <rect x="147" y="38" width="6" height="22" fill="#1b3142"/>
+                  <ellipse cx="150" cy="30" rx="12" ry="10" fill="#1b3142"/>
+                  <rect x="146" y="13" width="8" height="17" fill="#1b3142"/>
+                  <circle cx="150" cy="10" r="7" fill="#ffd700"/>
+                  <rect x="148" y="0" width="4" height="10" fill="#ffd700"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Adsterra Banner (Between Art & Content) -->
+        <div class="ad-banner-area">
+            <!-- এখানে Adsterra থেকে পাওয়া কোড বসান -->
+        </div>
+        <h1>ঈদ মোবারক! 🌙✨</h1>
+        <div id="wishForm">
+            <input type="text" id="senderName" placeholder="আপনার নাম">
+            <input type="text" id="receiverName" placeholder="প্রাপকের নাম">
+            <button onclick="generateWish()">উইশ তৈরি করুন</button>
+        </div>
+        <!-- Adsterra Banner (Between Form & Message) -->
+        <div class="ad-banner-area">
+            <!-- এখানে Adsterra থেকে পাওয়া কোড বসান -->
+        </div>
+        <p id="wishMessage" class="message" style="display:none;"></p>
+        <div class="share-buttons" id="shareButtons" style="display:none;">
+            <button class="share-button" onclick="shareOnWhatsApp()">WhatsApp-এ শেয়ার</button>
+            <button class="share-button messenger" onclick="shareOnMessenger()">Messenger-এ শেয়ার</button>
+            <button class="share-button copy-link" onclick="copyLink()">লিংক কপি করুন</button>
+        </div>
+        <!-- Adsterra Banner (Footer) -->
+        <div class="ad-banner-area">
+            <!-- এখানে Adsterra থেকে পাওয়া কোড বসান -->
+        </div>
+        <button class="send-own" id="sendOwnBtn" style="display:none;" onclick="resetForm()">নিজের নামে উইশ করুন</button>
+    </div>
+    <script>
+        let shareText = "";
+        let urlBase = window.location.origin + window.location.pathname;
+        let wishUrlForShare = "";
+
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const sender = params.get('sender');
+            const receiver = params.get('receiver');
+            if(sender && receiver) {
+                showWish(sender, receiver);
+            }
+        };
+
+        function generateWish() {
+            const sender = document.getElementById('senderName').value.trim();
+            const receiver = document.getElementById('receiverName').value.trim();
+            if (!sender || !receiver) {
+                alert("দয়া করে আপনার নাম ও প্রাপকের নাম লিখুন!");
+                return;
+            }
+            const wishUrl = `${urlBase}?sender=${encodeURIComponent(sender)}&receiver=${encodeURIComponent(receiver)}`;
+            showWish(sender, receiver, wishUrl);
+        }
+
+        function showWish(sender, receiver, wishUrl) {
+            shareText = `প্রিয় ${receiver},\n\n${sender} এর পক্ষ থেকে আপনাকে এবং আপনার পরিবারকে জানাই ঈদ মোবারক! 🌙✨\nসুখ, শান্তি ও ভালোবাসায় ভরে উঠুক আপনার জীবন। 💖\n\nএই উইশটি দেখুন ও নিজের নাম দিয়ে উইশ করতে এখানে যান: ${wishUrl || urlBase}`;
+            wishUrlForShare = wishUrl || window.location.href;
+            document.getElementById('wishMessage').innerText = shareText;
+            document.getElementById('wishMessage').style.display = 'block';
+            document.getElementById('shareButtons').style.display = 'block';
+            document.getElementById('sendOwnBtn').style.display = 'inline-block';
+            document.getElementById('wishForm').style.display = 'none';
+        }
+
+        function shareOnWhatsApp() {
+            const url = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            window.open(url, "_blank");
+        }
+
+        function shareOnMessenger() {
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(wishUrlForShare)}`;
+            window.open(url, "_blank");
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(wishUrlForShare)
+                .then(() => alert("লিংক কপি হয়েছে!"));
+        }
+
+        function resetForm() {
+            document.getElementById('senderName').value = "";
+            document.getElementById('receiverName').value = "";
+            document.getElementById('wishForm').style.display = 'block';
+            document.getElementById('wishMessage').style.display = 'none';
+            document.getElementById('shareButtons').style.display = 'none';
+            document.getElementById('sendOwnBtn').style.display = 'none';
+            window.history.replaceState({}, document.title, urlBase);
+        }
+    </script>
+</body>
+</html>
